@@ -1,0 +1,30 @@
+extends layout 
+
+
+block content
+  h1 #{title}
+  form(method='POST',action='/posts/edit/'+post.id)
+      #form-group
+        label Title:
+        input.form-control(name='title',type='text', value=post.title)
+      #form-group
+        label Body:
+        textarea.form-control(name='body',type='text')= value=post.body
+      #form-group
+        label Category:
+        input.form-control(name='category',type='text',value=post.category)
+      br
+      #form-group
+          label News-type:
+          input.form-control(name='newstype',type='text',value=post.news)
+          label Event-type:
+          input.form-control(name='eventtype',type='text',value=post.events)
+      br
+      #form-group
+          label UserName:
+          //- input.readonly.form-control(name='username',type='text',value=post.username)
+          p=user.username
+          //- label Status:
+          //- input.form-control(name='author',type='text',value=post.user.status)
+      br
+      input.btn.btn-primary(type='submit',value="Submit")

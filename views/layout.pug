@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    title BlogProject
+    link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet' href='/css/style.css')
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      a.navbar-brand(href='/') Blogging
+      |   
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      |   
+      #navbarsExampleDefault.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='/')
+              | Home 
+              span.sr-only (current)
+          |
+          if user 
+            li.nav-item
+              a.nav-link(href='/posts/add') Add Post
+        ul.nav.navbar-nav.navbar-right
+          if user
+            li
+              a(href='/users/logout') Logout
+          else 
+            li.nav-item
+              a(href='/users/register') Register |
+            li.nav-item
+              a(href='/users/login')  | login
+      br   
+    .container
+      != messages('message',locals)
+      if errors 
+        each error ,i in errors 
+          div(class="alert alert-danger") #{error.msg}
+      block content    
+      br
+      hr
+      footer
+        p Follow me @ 
+         a(href="https://twitter.com/PRAMODGREDDY") Twitter|
+         a(href="https://www.instagram.com/pramod_g_reddy/") Instagram|
+         a(href="https://www.facebook.com/pramod.greddy/") Facebook|
+         a(href="https://github.com/pramodgreddy") Github  
+        p  Copyright &copy;2020
+    script(src="/bower_components/jquery/dist/jquery.js")
+    script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
+    script(src='/js/main.js')
+    
+    
+    

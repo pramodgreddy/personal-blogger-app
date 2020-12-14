@@ -1,0 +1,18 @@
+extends layout 
+
+
+block content
+  //- div
+    //- p Congratulations on Registration! Welcome to your personal Blogging app!
+    //- p Steps to create your own Blog: 
+    //- p 1) Once you have registered and logged in, click on Add Post to get started! 
+    //- p 2) Complete all the required fields - Title of your blog, write your own body, describe the category of your blog .Ex news , review , information , article etc. , define the news type. Ex sports news, product review etc. , define the event associated. Ex cricket match, mobile phone review etc. and click on submit.
+    //- p 3) You can later edit or Delete your post by clicking on the post you need to change.
+  h1 #{title}
+  ul.list-group
+    each post, i in posts
+      li.list-group-item
+        a(href="/posts/"+post._id)= post.title
+        if user
+          if user.id==post.username
+            p=user.name

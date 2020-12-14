@@ -1,0 +1,32 @@
+extends layout 
+
+
+block content
+  if user
+    if user._id == post.username
+      a.btn.btn-default(href='/posts/edit/'+post.id) EDIT
+      |
+      |
+      a.btn.btn-danger.delete-post(href='#',data-id=post.id) DELETE
+    h1= post.title
+    label Body:
+      p= post.body
+    br
+    label Category:
+      p= post.category
+    br
+    label NewsType:
+      p=post.news
+    br
+    label EventType:
+      p=post.events
+    br
+    hr
+    label Name:
+      p=username
+    br
+    //- label Status:
+    //-   p=post.user.status
+    hr
+    label Created_on:
+      p=post.date
